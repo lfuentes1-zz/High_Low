@@ -11,19 +11,23 @@
 	do {
 		fwrite(STDOUT, "Can you guess my number? ");
 
-		//Typecasting $users_guess to an int since fgets returns a string
-		$users_guess = (int)trim(fgets(STDIN));
-		// var_dump($users_guess);
-
-		if ($users_guess < $random_number) {
-			fwrite(STDOUT, "You guessed too low, guess higher! " . PHP_EOL);
-			$try_number++;
-		} elseif ($users_guess > $random_number) {
-			fwrite(STDOUT, "You guessed too high, guess lower!\n");	
-			$try_number++;
+		$users_guess = trim(fgets(STDIN));
+		var_dump($users_guess);
+		
+		if (is_numeric($users_guess))
+		{	
+			if ($users_guess < $random_number) {
+				fwrite(STDOUT, "You guessed too low, guess higher! " . PHP_EOL);
+				$try_number++;
+			} elseif ($users_guess > $random_number) {
+				fwrite(STDOUT, "You guessed too high, guess lower!\n");	
+				$try_number++;
+			} else {
+				fwrite(STDOUT, "You guessed correctly!\n");
+				fwrite(STDOUT, "It took you $try_number guesses to get it correctly." . PHP_EOL);
+			}
 		} else {
-			fwrite(STDOUT, "You guessed correctly!\n");
-			fwrite(STDOUT, "It took you $try_number guesses to get it correctly." . PHP_EOL);
+			fwrite(STDOUT, "You entered a NaN, enter a number! " . PHP_EOL);
 		}
 	}		
 	while ($random_number != $users_guess);
