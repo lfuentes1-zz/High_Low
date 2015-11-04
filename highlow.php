@@ -3,7 +3,9 @@
 	define ("MIN", "1");
 	define ("MAX", "100"); 
 
-	$random_number = rand (MIN, MAX);	
+	// $random_number = rand (MIN, MAX);	
+	//mt_rand generates a better random value by using an algorithm that allows random numbers to be generated much faster
+	$random_number = mt_rand (MIN, MAX);
 
 	do {
 		fwrite(STDOUT, "Can you guess my number? ");
