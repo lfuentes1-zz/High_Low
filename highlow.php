@@ -14,6 +14,8 @@
 		$users_guess = trim(fgets(STDIN));
 		var_dump($users_guess);
 		
+		//is_numeric is a PHP function that checks if the $users_guess is a numeric value or a numeric string value
+		//ctype-digit is also another function PHP that can provide the same desired results
 		if (is_numeric($users_guess))
 		{	
 			if ($users_guess < $random_number) {
